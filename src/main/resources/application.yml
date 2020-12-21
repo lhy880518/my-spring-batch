@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/edithome?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 7164gusdyd
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      idle-timeout: 10000
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: false
+      format_sql: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        format_sql: true
+        use_sql_comments: true
+  batch:
+    job:
+      names: ${job.name:NONE}
